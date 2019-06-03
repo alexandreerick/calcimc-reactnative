@@ -1,59 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import {
-  Text, Image, StyleSheet, Dimensions, ImageBackground, StatusBar,
+  Text, View, StyleSheet, TouchableOpacity,
 } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     flex: 1,
-    paddingHorizontal: 20,
+    backgroundColor: '#efedee',
   },
-  fileName: {
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-  instructions: {
-    color: '#DDD',
-    fontSize: 14,
-    marginTop: 20,
+  input: {
+    height: 80,
     textAlign: 'center',
+    width: '50%',
+    fontSize: 50,
+    marginTop: 24,
   },
-  logo: {
-    height: Dimensions.get('window').height * 0.11,
-    marginVertical: Dimensions.get('window').height * 0.11,
-    width: Dimensions.get('window').height * 0.11 * (1950 / 662),
+  entradas: {
+    flexDirection: 'row',
   },
-  welcome: {
-    color: '#fff',
-    fontSize: 22,
+  button: {
+    backgroundColor: '#ce183a',
+    marginTop: 25,
+  },
+  buttonText: {
+    alignSelf: 'center',
+    padding: 30,
+    fontSize: 25,
+    color: '#f2eded',
     fontWeight: 'bold',
-    textAlign: 'center',
   },
 });
 
 const Main = () => (
-  <ImageBackground
-    source={{
-      uri: 'https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/background.png',
-    }}
-    style={styles.container}
-    resizeMode="cover"
-  >
-    <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
-    <Image
-      source={{
-        uri: 'https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/rocketseat_logo.png',
-      }}
-      style={styles.logo}
-      resizeMode="contain"
-    />
-    <Text style={styles.welcome}>Bem-vindo ao Template Básico!</Text>
-    <Text style={styles.instructions}>Essa é a tela principal da sua aplicação =)</Text>
-    <Text style={styles.instructions}>Você pode editar a tela no arquivo:</Text>
-    <Text style={[styles.instructions, styles.fileName]}>src/pages/Main/index.js</Text>
-  </ImageBackground>
+  <View style={styles.container}>
+    <View style={styles.entradas}>
+      <TextInput placeholder="Altura" keyboardType="numeric" style={styles.input} />
+      <TextInput placeholder="Peso" keyboardType="numeric" style={styles.input} />
+    </View>
+    <TouchableOpacity style={styles.button} onPress={() => {}}>
+      <Text style={styles.buttonText}>Calcular</Text> 
+    </TouchableOpacity>
+  </View>
 );
 
 export default Main;
